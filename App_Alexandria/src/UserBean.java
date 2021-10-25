@@ -12,14 +12,15 @@ public class UserBean {
     private String password;
 
 
-    public UserBean() {
-        //super();
+    public UserBean(String line) {
+    	String[] parts = line.split("\t");
+    	setPassword(parts[1]);
+    	setUsername(parts[0]);
     }
 
     public UserBean(String username, String password) {
-        //super();
-        this.username = username;
-        this.password = password;
+        setUsername(username);
+        setPassword(password);
     }
 
     public String getUsername() {

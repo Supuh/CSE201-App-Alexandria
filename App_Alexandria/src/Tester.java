@@ -3,8 +3,9 @@ import java.util.ArrayList;
 //import java.util.Comparator;
 import java.util.Scanner;
 
-public class ApplicationTester {
-private static ArrayList<Application> apps = new ArrayList<>();
+public class Tester {
+
+	private static ArrayList<Application> apps = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		loadData();

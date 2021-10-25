@@ -4,7 +4,7 @@ public class LoginTester {
 
         UserDao ud = new UserDaoImpl();
 
-        UserBean user = new UserBean();
+        UserBean user = new UserBean("pizza");
 
         String name = "Jack";
         String password = "abc123";

@@ -1,33 +1,40 @@
 //The base application
+import java.util.ArrayList;
 public class Application implements Comparable<Application>{
 
 	private String name, description, origin, version, storehl;
 	private double price;
-
+	private ArrayList<String> platforms;
+	private  int platsize;
 
 	/////////////////////////////Platforms is an issue
-	//Constructor
+	//Constructor You will need everything for it to work except for platforms
 	public Application(String ln) {
 		String[] parts = ln.split("\t");
 		setName(parts[0]);
 		setDescription(parts[1]);
 		setOrigin(parts[2]);
-		//setPlatform(parts[6]);
 		setVersion(parts[3]);
 		setStorehl(parts[4]);
-		///////double lol
-		setPrice(Integer.parseInt(parts[5]));
+		setPrice(Double.parseDouble(parts[5]));
+		setPlatforms(new ArrayList<>());
+		setPlatsize(0);
+		
+//		platforms.add(parts[6]);
+		for(int i = 6; i < parts.length ; i++) {
+			platforms.add(parts[i]);
+			platsize++;
+		}
 	}
-	
+
 	@Override
 	public int compareTo(Application o) {
-		// TODO Auto-generated method stub
 		return name.compareTo(o.name);
 	}
 
 	
 	public String toString() {
-		return (name + " - " + description + " - " + origin + " - " + version + " - " + storehl + " - " + price + " - " + "Platforms");
+		return (name + " - " + description + " - " + origin + " - " + version + " - " + storehl + " - " + price + " - " + this.platforms);
 	}
 	
 	
@@ -80,5 +87,21 @@ public class Application implements Comparable<Application>{
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public ArrayList<String> getPlatforms() {
+		return platforms;
+	}
+
+	public void setPlatforms(ArrayList<String> platforms) {
+		this.platforms = platforms;
+	}
+
+	public int getPlatsize() {
+		return platsize;
+	}
+
+	public void setPlatsize(int platsize) {
+		this.platsize = platsize;
 	}
 }
