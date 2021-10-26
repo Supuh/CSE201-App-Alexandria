@@ -1,10 +1,5 @@
 Usernames	Passwords
-bob	do you think im sexy
-bob	do you think im sexy
-billy	pizza
-bob	do you think im sexy
-bob	do you think im sexy
-billy	pizza
-billybob	billy?
-df	df
-abc	abc
+user1	pass1
+user2	pass2
+user3	pass3
+user4	pass4

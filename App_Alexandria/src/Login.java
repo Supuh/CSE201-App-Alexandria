@@ -19,7 +19,7 @@ public class Login extends JFrame implements ActionListener {
     JTextField tf1, tf2;
     JButton btn1, sButton;
     JPasswordField p1, sp1;
-    private static ArrayList<UserBean> Beans = new ArrayList<>();
+    private ArrayList<UserBean> Beans = new ArrayList<>();
     
     Login() {
         setTitle("Login/Signup for App Alexandria");
@@ -28,6 +28,7 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        ///////////////////////////////////////////////////////////Login
         l1 = new JLabel("Login for App Alexandria");
         l1.setForeground(Color.blue);
         l1.setFont(new Font("Serif", Font.BOLD, 20));
@@ -78,6 +79,7 @@ public class Login extends JFrame implements ActionListener {
         add(sp1);
         add(sButton);
         sButton.addActionListener(this);
+        
     }
 
 	public void actionPerformed(ActionEvent e) {
@@ -91,17 +93,18 @@ public class Login extends JFrame implements ActionListener {
 			tf2.setText("");
 			sp1.setText("");
 		}
-    	//showData();
     }
 
 	
-	private static void loadUserBeans() {
+	private void loadUserBeans() {
 		try( Scanner fin = new Scanner(new File("UserBeans.txt"))  ) {
+			Beans = new ArrayList<>();
 			fin.nextLine();
 			while(fin.hasNextLine()) {
 				UserBean x = new UserBean(fin.nextLine());
 				Beans.add(x);
 			}
+			fin.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,7 +115,12 @@ public class Login extends JFrame implements ActionListener {
 		if (username.equals("") || password.equals("")) return false;
 		loadUserBeans();
 		for(int i = 0; i < Beans.size() ; i++) {
-			if (Beans.get(i).getUsername().equals(username) && Beans.get(i).getPassword().equals(password)) return true;
+			// Successful Login?
+			if (Beans.get(i).getUsername().equals(username) && Beans.get(i).getPassword().equals(password)) {
+				dispose();
+				new AppDisplay().setVisible(true);
+				break;
+			}
 		}
 		return false;
 	}
@@ -137,48 +145,6 @@ public class Login extends JFrame implements ActionListener {
 		}
 		return false;
 	}
-	
-	
-//    public void showData() {
-//        JFrame f1 = new JFrame();
-//        JLabel l, l0;
-//
-//        String str1 = tf1.getText();
-//        char[] p = p1.getPassword();
-//        String str2 = new String(p);
-//        /*try {
-//            Class.forName("");
-//            Connection con = DriverManager.getConnection("", "sandeep", "");
-//            PreparedStatement ps = con.prepareStatement("");
-//            ps.setString(1, str1);
-//            ps.setString(2, str2);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                f1.setVisible(true);
-//                f1.setSize(600, 600);
-//                f1.setLayout(null);
-//                l = new JLabel();
-//                l0 = new JLabel("you are successfully logged in..");
-//                l0.setForeground(Color.blue);
-//                l0.setFont(new Font("Serif", Font.BOLD, 30));
-//                l.setBounds(60, 50, 400, 30);
-//                l0.setBounds(60, 100, 400, 40);
-//
-//                f1.add(l);
-//                f1.add(l0);
-//                l.setText("Welcome " + rs.getString(1));
-//                l.setForeground(Color.red);
-//                l.setFont(new Font("Serif", Font.BOLD, 30));
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null,
-//                        "Incorrect Username or password..Try Again with correct detail");
-//            }
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }*/
-//    }
-
 
     public static void main(String arr[]) {
         new Login();
