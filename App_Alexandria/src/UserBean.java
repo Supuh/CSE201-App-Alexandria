@@ -1,17 +1,12 @@
 
 
 public class UserBean {
-    /**
-     * username
-     */
+    
+	//==================================================================== Properties
     private String username;
-
-    /**
-     * user passport
-     */
     private String password;
 
-
+    //==================================================================== Constructors
     public UserBean(String line) {
     	String[] parts = line.split("\t");
     	setPassword(parts[1]);
@@ -23,6 +18,7 @@ public class UserBean {
         setPassword(password);
     }
 
+    //==================================================================== Getters and Setters
     public String getUsername() {
         return username;
     }
@@ -39,9 +35,10 @@ public class UserBean {
         this.password = password;
     }
 
+    //==================================================================== Methods
     @Override
     public String toString() {
-        return "UserBean [username=" + username + ", password=" + password + "]";
+        return "UserBean [username= " + username + ", password= " + password + "]";
     }
 
 

@@ -2,13 +2,13 @@
 import java.util.ArrayList;
 public class Application implements Comparable<Application>{
 
+	//==================================================================== Properties
 	private String name, description, origin, version, storehl;
 	private double price;
 	private ArrayList<String> platforms;
 	private  int platsize;
 
-	/////////////////////////////Platforms is an issue
-	//Constructor You will need everything for it to work except for platforms
+	//==================================================================== Constructor
 	public Application(String ln) {
 		String[] parts = ln.split("\t");
 		setName(parts[0]);
@@ -18,7 +18,7 @@ public class Application implements Comparable<Application>{
 		setStorehl(parts[4]);
 		setPrice(Double.parseDouble(parts[5]));
 		setPlatforms(new ArrayList<>());
-		setPlatsize(0);
+		platsize = 0;
 		
 //		platforms.add(parts[6]);
 		for(int i = 6; i < parts.length ; i++) {
@@ -27,6 +27,7 @@ public class Application implements Comparable<Application>{
 		}
 	}
 
+	//==================================================================== Methods
 	@Override
 	public int compareTo(Application o) {
 		return name.compareTo(o.name);
@@ -40,7 +41,7 @@ public class Application implements Comparable<Application>{
 	
 	
 	
-	///////Getters and Setters
+	//==================================================================== Getters and Setters
 	public String getName() {
 		return name;
 	}
@@ -95,13 +96,10 @@ public class Application implements Comparable<Application>{
 
 	public void setPlatforms(ArrayList<String> platforms) {
 		this.platforms = platforms;
+		this.platsize = platforms.size();
 	}
 
 	public int getPlatsize() {
 		return platsize;
-	}
-
-	public void setPlatsize(int platsize) {
-		this.platsize = platsize;
 	}
 }

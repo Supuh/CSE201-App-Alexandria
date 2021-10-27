@@ -119,14 +119,18 @@ public class Login extends JFrame implements ActionListener {
 			if (Beans.get(i).getUsername().equals(username) && Beans.get(i).getPassword().equals(password)) {
 				dispose();
 				new AppDisplay().setVisible(true);
-				break;
+				return true;
 			}
 		}
+		JOptionPane.showMessageDialog(null, "Incorrect username or password. \n Please Try Again");
 		return false;
 	}
 	
 	public boolean signUp(String username, String password) {
-		if (username.equals("") || password.equals("")) return false;
+		if (username.equals("") || password.equals("")) {
+			JOptionPane.showMessageDialog(null, "An Error Occurred During Signup. \n Please Try Again");
+			return false;
+		}
 		loadUserBeans();
 		Beans.add(new UserBean(username, password));
 		File file = new File("UserBeans.txt");
@@ -139,10 +143,12 @@ public class Login extends JFrame implements ActionListener {
 			writer.println(Beans.get(i).getUsername() + "	" + Beans.get(i).getPassword());
 		}
 		writer.close();
+		JOptionPane.showMessageDialog(null, "Signup successful!");
 		return true;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		JOptionPane.showMessageDialog(null, "An Error Occurred During Signup. \n Please Try Again");
 		return false;
 	}
 
