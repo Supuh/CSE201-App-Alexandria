@@ -1,22 +1,28 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class AppDisplay extends JFrame {
+public class AppDisplay extends JFrame implements ActionListener {
 
 	//==================================================================== Properties
 	JLabel appLabel;
 	JScrollPane scrollPane;
 	JPanel jpMain, jpApp;
 	JTextArea appTA;
+	JTextField searchBar;
+	JButton searchBarS;
 	//static JList appList = new JList(buttonList);
 	
 	private static ArrayList<Application> Apps = new ArrayList<>();
@@ -36,6 +42,17 @@ public class AppDisplay extends JFrame {
 	//==================================================================== JPanel Builder
 	
 	private void addComponent() {
+		//Search bar
+		searchBar = new JTextField("Search Bar");
+		searchBar.setBounds(300, 370, 200, 30);
+		add(searchBar);
+		
+		
+		searchBarS = new JButton("Search");
+		searchBarS.setBounds(550, 370, 75, 30);
+		add(searchBarS);
+		searchBarS.addActionListener((ActionListener) this);
+		
 		// Initialize JPanel
 		jpMain = new JPanel();
 		jpMain.setLayout(new BorderLayout());
@@ -77,6 +94,25 @@ public class AppDisplay extends JFrame {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("Search")) {
+			System.out.print(searchBars(searchBar.getText()));
+			searchBar.setText("");
+			
+		} 
+    }
+	
+	public Application searchBars(String key) {
+		Application ret = null;
+		loadApps();
+		
+		for (int i = 0; i < Apps.size(); i++)
+		if (Apps.get(i).getName().equals(key)) ret = Apps.get(i);
+//		System.out.println(Apps.get(i) + "  ");	
+		//System.out.print(ret);
+		return ret;
 	}
 	
 	//==================================================================== Main
