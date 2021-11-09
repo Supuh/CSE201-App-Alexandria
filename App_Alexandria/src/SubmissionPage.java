@@ -19,7 +19,7 @@ public class SubmissionPage extends JFrame implements ActionListener{
     JTextField tfname, tfdesc, tfori, tfver, tfstore, tfprice;
     JButton submit;
     private ArrayList<Application> requests = new ArrayList<>();
-    
+    JButton submissionp;
     SubmissionPage() {
         setTitle("Request new apps for App Alexandria");
         setVisible(true);
@@ -88,6 +88,18 @@ public class SubmissionPage extends JFrame implements ActionListener{
         submit.addActionListener(this);
         submit.setBounds(190, 310, 200, 30);
         add(submit);
+        
+		// app page button
+		submissionp = new JButton("Click here to return to main page for App Alexandria");
+		submissionp.setBounds(225, 570, 350, 30);
+		add(submissionp);
+		submissionp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new AppDisplay().setVisible(true);
+			}
+		});
     }
     
     
