@@ -55,8 +55,19 @@ public class AppDisplay extends JFrame{
 		searchBarS.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.print(searchBars(searchBar.getText()));
-				searchBar.setText("");
+				//System.out.print(searchBars(searchBar.getText()));
+				//appTA.setText(searchBarStrings(searchBar.getText()));
+				//searchBar.setText("");
+				
+				String query = searchBar.getText();
+				ArrayList<Application> selected = new ArrayList<>();
+				searchBarStrings(query, selected);
+				String result = "";
+				for(Application app : selected){
+					result += app.toString();
+					result += "\n";
+				}
+				appTA.setText(result);
 			}
 		});
 		
@@ -73,12 +84,12 @@ public class AppDisplay extends JFrame{
 			}
 		});
 		
-
+		// Sort/Filter combo box
 		platformBox=new JComboBox<>();
 		platformBox.setBounds(300,370,200,30);
 		add(platformBox);
 		
-		
+		// Sort button
 		sortButton = new JButton("Sort");
 		sortButton.setBounds(550, 370, 75, 30);
 		add(sortButton);
@@ -102,6 +113,7 @@ public class AppDisplay extends JFrame{
 			}
 		});
 
+		// Filter button
 		filterButton=new JButton("Filter");
 		filterButton.setBounds(650,370,75,30);
 		add(filterButton);
@@ -188,16 +200,22 @@ public class AppDisplay extends JFrame{
 		}
 	}
 	
-	public Application searchBars(String key) {
-		Application ret = null;
-		loadApps();
-		
-		for (int i = 0; i < Apps.size(); i++)
-		if (Apps.get(i).getName().equals(key)) ret = Apps.get(i);
-//		System.out.println(Apps.get(i) + "  ");	
-		//System.out.print(ret);
-		return ret;
+//	public Application searchBarApps(String key) {
+//		Application ret = null;
+//		
+//		for (int i = 0; i < Apps.size(); i++)
+//		if (Apps.get(i).getName().equals(key)) ret = Apps.get(i);
+////		System.out.println(Apps.get(i) + "  ");	
+//		//System.out.print(ret);
+//		return ret;
+//	}
+	
+	public void searchBarStrings(String key, ArrayList<Application> selectedApplication) {
+		for (Application app : Apps) {
+			if (app.getName().equals(key)) { selectedApplication.add(app); }
+		}
 	}
+	
 	//==================================================================== Main
 	public static void main(String[] args) {
 		AppDisplay ap = new AppDisplay();
