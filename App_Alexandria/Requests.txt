@@ -2,3 +2,5 @@ Name	Description	Origin	Version	StoreHotLink	Price	Platform
 Bob game	game with bob	Shadowhunter inc	5.6.9	Shadowwhunters.com	999.99
 hosdfh	sklbdk	sjfgdlk	sfgl	sljgfdhs	5.0
 example1	example2	example3	example4	example5	6.0
+App	test	test	1.0	www.app.com	20.21
+app	app	app	app	app	1.0

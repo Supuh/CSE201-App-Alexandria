@@ -12,7 +12,7 @@ public class MyDialog extends JDialog {
 	
 	private static ArrayList<Application> Apps = new ArrayList<>();
 	
-    public MyDialog(JFrame jFrame, Application app) {   	
+    public MyDialog(JFrame jFrame, Application app, AppDisplay home) {   	
         super(jFrame, "ApplicationInformation");
         this.setLayout(new BorderLayout());
         if (app != null) {
@@ -70,6 +70,14 @@ public class MyDialog extends JDialog {
 
         }
         setBounds(100, 100, 400, 540);
+        
+        Runtime.getRuntime().addShutdownHook(new Thread()
+        {
+          public void run()
+          {
+
+          }
+        });
     }
     
     private void loadApps() {

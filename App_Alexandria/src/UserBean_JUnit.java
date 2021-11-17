@@ -12,10 +12,10 @@ class UserBean_JUnit {
 		beans = new UserBean[NUMBER_TEST_BEANS];
 		
 		
-		str = "user1	pass1";
+		str = "user1	pass1	false";
 		beans[0] = new UserBean(str);
 		
-		str = "user2	pass2";
+		str = "user2	pass2	false";
 		beans[1] = new UserBean(str);
 		
 		str = "user3";
@@ -52,6 +52,18 @@ class UserBean_JUnit {
 		assertEquals(str, beans[1].getPassword());
 	}
 
+	@Test
+	void testGetAdmin() {
+		beans[1].setAdmin(true);
+		assertTrue(beans[1].getAdmin());
+	}
+
+	@Test
+	void testSetAdmin() {
+		beans[1].setAdmin(false);
+		assertFalse(beans[1].getAdmin());
+	}
+	
 	@Test
 	void testToString() {
 		String str = "UserBean [username= user1, password= pass1]";

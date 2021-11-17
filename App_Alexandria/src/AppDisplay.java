@@ -27,6 +27,7 @@ public class AppDisplay extends JFrame{
     JTable myTable;
     DefaultTableModel tbModel;
 	JButton searchBarS, submissionp, adminb;
+	AppDisplay home = this;
 	
 	private JComboBox<String> platformBox;
 	
@@ -41,6 +42,7 @@ public class AppDisplay extends JFrame{
 		this.setTitle("App Alexandria");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		clearArrays();
 		addComponent();
 		//loadApps();
 		
@@ -52,13 +54,13 @@ public class AppDisplay extends JFrame{
 
 		if(Login.getAdmin()) {
 		// get to admin page
-		adminb = new JButton("Click here to view app requests for App Alexandria");
-		adminb.setBounds(225, 770, 350, 30);
+		adminb = new JButton("Click here to view app requests [ADMIN]");
+		adminb.setBounds(225, 720, 350, 30);
 		add(adminb);
 		adminb.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				disPlayApps.clear();
+				clearArrays();
 				dispose();
 				new RequestPage().setVisible(true);
 			}
@@ -104,7 +106,7 @@ public class AppDisplay extends JFrame{
 		submissionp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				disPlayApps.clear();
+				clearArrays();
 				dispose();
 				new SubmissionPage().setVisible(true);
 			}
@@ -194,7 +196,7 @@ public class AppDisplay extends JFrame{
 	
 	//==================================================================== Methods
 	
-	private void loadApps() {
+	public void loadApps() {
 		try( Scanner fin = new Scanner(new File("Applicationdatab.txt"))  ) {
 			fin.nextLine();
 			//String apps = "";
@@ -246,15 +248,15 @@ public class AppDisplay extends JFrame{
                 if (e.getClickCount() == 2) {
                     int row = ((JTable) e.getSource()).rowAtPoint(e.getPoint());
                     int col = ((JTable) e.getSource()).columnAtPoint(e.getPoint());
-                    new MyDialog(AppDisplay.this, disPlayApps.get(row)).setVisible(true);
-                } else return;
+                    new MyDialog(AppDisplay.this, disPlayApps.get(row), home).setVisible(true);
+                } else { return; }
             }
         });
         scrollPane = new JScrollPane(myTable);
         jpApp.add(scrollPane);
     }
 
-    private void refreshTable() {
+    public void refreshTable() {
         tbModel.setRowCount(0);
         int appCount = disPlayApps.size();
         String[][] tableData = new String[appCount][7];
@@ -301,6 +303,12 @@ public class AppDisplay extends JFrame{
 		for (Application app : Apps) {
 			if (app.getName().equals(key)) { selectedApplication.add(app); }
 		}
+	}
+	
+	public void clearArrays() {
+		platforms.clear();
+		disPlayApps.clear();
+		Apps.clear();
 	}
 	
 	//==================================================================== Main

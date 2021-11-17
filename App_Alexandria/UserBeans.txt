@@ -2,3 +2,5 @@ Usernames	Passwords	Admin
 admin1	pass1	true
 user1	pass1	false
 user2	pass2	false
+admin5	pass5	true
+fake	app	false
