@@ -15,7 +15,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class SubmissionPage extends JFrame implements ActionListener{
-    JLabel name, desc, ori, ver, store, price, title;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel name, desc, ori, ver, store, price, title;
     JTextField tfname, tfdesc, tfori, tfver, tfstore, tfprice;
     JButton submit;
     private ArrayList<Application> requests = new ArrayList<>();

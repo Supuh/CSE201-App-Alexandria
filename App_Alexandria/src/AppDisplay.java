@@ -20,7 +20,7 @@ public class AppDisplay extends JFrame{
 	JButton sortButton;
 	JButton filterButton;
 	JTextField searchBar;
-	JButton searchBarS, submissionp;
+	JButton searchBarS, submissionp, adminb;
 	
 	private JComboBox<String> platformBox;
 	
@@ -43,6 +43,19 @@ public class AppDisplay extends JFrame{
 	
 	private void addComponent() {
 
+		if(Login.getAdmin()) {
+		// get to admin page
+		adminb = new JButton("Click here to view app requests for App Alexandria");
+		adminb.setBounds(225, 670, 350, 30);
+		add(adminb);
+		adminb.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RequestPage().setVisible(true);
+			}
+		});
+		}
 		//Search bar
 		searchBar = new JTextField("Search Bar");
 		searchBar.setBounds(300, 470, 200, 30);
@@ -218,6 +231,7 @@ public class AppDisplay extends JFrame{
 	
 	//==================================================================== Main
 	public static void main(String[] args) {
+		/////////////////////////////////////////////////////Check this
 		AppDisplay ap = new AppDisplay();
         ap.setVisible(true);
 		//new AppDisplay();

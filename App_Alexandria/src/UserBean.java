@@ -5,17 +5,25 @@ public class UserBean {
 	//==================================================================== Properties
     private String username;
     private String password;
+    private Boolean admin;
 
-    //==================================================================== Constructors
+
+	//==================================================================== Constructors
     public UserBean(String line) {
     	String[] parts = line.split("\t");
     	setPassword(parts[1]);
     	setUsername(parts[0]);
+    	if(parts[2].equals("true")) {
+    		setAdmin(true);
+    	} else {
+    		setAdmin(false);
+    	}
     }
 
-    public UserBean(String username, String password) {
+    public UserBean(String username, String password, boolean admin) {
         setUsername(username);
         setPassword(password);
+        setAdmin(admin);
     }
 
     //==================================================================== Getters and Setters
@@ -35,6 +43,14 @@ public class UserBean {
         this.password = password;
     }
 
+    public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+	
     //==================================================================== Methods
     @Override
     public String toString() {

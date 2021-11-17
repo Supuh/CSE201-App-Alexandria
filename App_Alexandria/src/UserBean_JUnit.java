@@ -20,7 +20,7 @@ class UserBean_JUnit {
 		
 		str = "user3";
 		str2 = "pass3";
-		beans[2] = new UserBean(str, str2);
+		beans[2] = new UserBean(str, str2, false);
 		
 	}
 	

@@ -17,10 +17,10 @@ import java.sql.*;
 public class Login extends JFrame implements ActionListener {
     JLabel l1, l2, l3, sUsername, sPassword, sHeader;
     JTextField tf1, tf2;
-    JButton btn1, sButton;
+    JButton btn1, sButton, saButton;
     JPasswordField p1, sp1;
     private ArrayList<UserBean> Beans = new ArrayList<>();
-    
+    public static Boolean adminf = false;
     Login() {
         setTitle("Login/Signup for App Alexandria");
         setVisible(true);
@@ -63,14 +63,14 @@ public class Login extends JFrame implements ActionListener {
         sPassword = new JLabel("Enter Password:");
         tf2 = new JTextField();
         sp1 = new JPasswordField();
-        sButton = new JButton("Sign up");
+        sButton = new JButton("Sign up as an user");
 
         sHeader.setBounds(100, 330, 400, 30);
         sUsername.setBounds(80, 370, 200, 30);
         sPassword.setBounds(80, 410, 200, 30);
         tf2.setBounds(300, 370, 200, 30);
         sp1.setBounds(300, 410, 200, 30);
-        sButton.setBounds(150, 460, 100, 30);
+        sButton.setBounds(100, 460, 200, 30);
 
         add(sHeader);
         add(sUsername);
@@ -80,6 +80,11 @@ public class Login extends JFrame implements ActionListener {
         add(sButton);
         sButton.addActionListener(this);
         
+        // admin sign up button
+        saButton = new JButton("Sign up as an admin");
+        saButton.setBounds(350, 460, 200, 30);
+        add(saButton);
+        saButton.addActionListener(this);
     }
 
 	public void actionPerformed(ActionEvent e) {
@@ -88,8 +93,12 @@ public class Login extends JFrame implements ActionListener {
 			tf1.setText("");
 			p1.setText("");
 			
-		} else if(e.getActionCommand().equals("Sign up")) {
-			signUp(tf2.getText(),String.valueOf(sp1.getPassword()));
+		} else if(e.getActionCommand().equals("Sign up as an user")) {
+			signUp(tf2.getText(),String.valueOf(sp1.getPassword()), false);
+			tf2.setText("");
+			sp1.setText("");
+		} else if(e.getActionCommand().equals("Sign up as an admin")) {
+			signUp(tf2.getText(),String.valueOf(sp1.getPassword()), true);
 			tf2.setText("");
 			sp1.setText("");
 		}
@@ -117,6 +126,7 @@ public class Login extends JFrame implements ActionListener {
 		for(int i = 0; i < Beans.size() ; i++) {
 			// Successful Login?
 			if (Beans.get(i).getUsername().equals(username) && Beans.get(i).getPassword().equals(password)) {
+				 adminf = Beans.get(i).getAdmin();
 				dispose();
 				new AppDisplay().setVisible(true);
 				return true;
@@ -126,21 +136,21 @@ public class Login extends JFrame implements ActionListener {
 		return false;
 	}
 	
-	public boolean signUp(String username, String password) {
+	public boolean signUp(String username, String password, boolean admin) {
 		if (username.equals("") || password.equals("")) {
 			JOptionPane.showMessageDialog(null, "An Error Occurred During Signup. \n Please Try Again");
 			return false;
 		}
 		loadUserBeans();
-		Beans.add(new UserBean(username, password));
+		Beans.add(new UserBean(username, password, admin));
 		File file = new File("UserBeans.txt");
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(file);
 
-		writer.println("Usernames	Passwords");
+		writer.println("Usernames	Passwords	Admin");
 		for(int i = 0; i < Beans.size() ; i++) {
-			writer.println(Beans.get(i).getUsername() + "	" + Beans.get(i).getPassword());
+			writer.println(Beans.get(i).getUsername() + "	" + Beans.get(i).getPassword() + "	" + Beans.get(i).getAdmin());
 		}
 		writer.close();
 		JOptionPane.showMessageDialog(null, "Signup successful!");
@@ -152,6 +162,9 @@ public class Login extends JFrame implements ActionListener {
 		return false;
 	}
 
+	public static Boolean getAdmin() {
+		return adminf;
+	}
     public static void main(String arr[]) {
         new Login();
     }
