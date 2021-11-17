@@ -1,4 +1,5 @@
-Name	Description	Origin	Version	StoreHotLink	Price	Platform
-Cat Game	a fun game with cats	Catgame Studios	2.0	www.cat.com	29.01	Switch	Xbox
-Bob's Ringy Adventure	A ring collecting game	Shadowhunters Studios	2.0.1	www.shadowhunters.com	999.99	Gamersystem
-Cat Game Collectors Edition	a fun game with  prestige cats	Catgame Studios	1.2	www.cat.com	29.02	Switch	Xbox360
+Name	Description	Origin	Version	StoreHotLink	Price	Likes	Platforms
+Cat Game	a fun game with cats	Catgame Studios	2.0	www.cat.com	29.01	2	Switch	Xbox
+Bob's Ringy Adventure	A ring collecting game	Shadowhunters Studios	2.0.1	www.shadowhunters.com	999.99	5	Gamersystem
+Cat Game Collectors Edition	a fun game with  prestige cats	Catgame Studios	1.2	www.cat.com	29.02	10	Switch	Xbox360
+pizza pizza	game of pizza	pizzaco	9.0	pizzapizza	8.0	0	Playstation

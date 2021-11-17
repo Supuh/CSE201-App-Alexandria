@@ -18,11 +18,15 @@ Listed below you will find basic descriptions for each class and their purposes 
 
 
 
-* App Display: The core of the program. AppDisplay's purpose is to Display App Alexandria's registered apps to users and to allow access 
+* AppDisplay: The core of the program. AppDisplay's purpose is to Display App Alexandria's registered apps to users and to allow access 
 to the app-submission page (SubmissionPage). Admin-level users also have the ability to visit the app-approval page through this class (RequestPage). 
 Reading in apps from the Application database (Applicationdatab.txt) is handled via the "loadApps" method, sorting and filtering is handled via the
 "sortByPlatform" method called by an ActionListener component, and searching apps' names is handled by the "searchBarString" method also called by an
 ActionListener.
+
+* MyDialog: A class that displays information for an app selected in the AppDisplay GUI. Through the use of ActionListener components, users can "like"
+or "dislike" the app they are viewing through My Dialog. Using the "loadApps" and "refreshApps" methods, MyDialog keeps any changes to like-count updated 
+within the app database (Applicationdatab.txt).
 
 * Login: The first page users see when accessing the program. From here, new users have the ability to sign up for an account or login to an existing
 one. The method "loadUserBeans" is used to access the User database (UserBeans.txt) and add these user account objects into the class for login. Login
@@ -42,7 +46,7 @@ method to submit the app data into the request database (Requests.txt).
 (FAQ.txt) and can be reached from the Login page.
 
 * Application: The object class for applications. Application quite simply stores app data and allows for getting and setting the properties that
-make up said apps. Name, description, origin/developer, version number, store hotlinks, price, and available platforms for an app are stored here.
+make up said apps. Name, description, origin/developer, version number, store hotlinks, price, like count, and available platforms for an app are stored here.
 
 * UserBean: The "bean" which stores all User information. UserBean simply stores users' account information and allows for getting and setting of
 the relevant properties. Username, password, and admin status are stored here. 
@@ -52,3 +56,5 @@ the relevant properties. Username, password, and admin status are stored here.
 * Application_JUnit: Tests the Application class' general functionality using JUnit/White-box testing.
 
 * UserBean_JUnit: Tests the UserBean class' general functionality using JUnit/White-box testing.
+
+* SubmissionPage_JUnit: Tests the SubmissionPage class' general functionality using JUnit/White-box testing.

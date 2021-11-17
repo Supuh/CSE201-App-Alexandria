@@ -123,7 +123,7 @@ public class SubmissionPage extends JFrame implements ActionListener{
 			}
 	}
   
-    private boolean requestW(String name, String desc, String ori, String ver, String store, String price) {
+    public boolean requestW(String name, String desc, String ori, String ver, String store, String price) {
 		if (name.equals("") || desc.equals("")) {
 			JOptionPane.showMessageDialog(null, "Please enter every element of data");
 			return false;

@@ -159,7 +159,7 @@ public class RequestPage extends JFrame implements ActionListener{
 			fin.nextLine();
 			String apps = "";
 			while(fin.hasNextLine()) {
-				Application tmp = new Application(fin.nextLine());
+				Application tmp = new Application(fin.nextLine(), true);
 				Apps.add(tmp);
 				apps += tmp.toString() + "\n";
 			}
@@ -196,10 +196,10 @@ public class RequestPage extends JFrame implements ActionListener{
 		try {
 			writer = new PrintWriter(file);
 
-		writer.println("Name	Description	Origin	Version	StoreHotLink	Price	Platforms");
+		writer.println("Name	Description	Origin	Version	StoreHotLink	Price	Likes	Platforms");
 		for(int i = 0; i < Apps.size() ; i++) {
 			String tmp = "";
-			tmp +=  Apps.get(i).getName() + "	"+ Apps.get(i).getDescription() + "	" + Apps.get(i).getOrigin() + "	" + Apps.get(i).getVersion() + "	" + Apps.get(i).getStorehl() + "	" + Apps.get(i).getPrice();
+			tmp +=  Apps.get(i).getName() + "	"+ Apps.get(i).getDescription() + "	" + Apps.get(i).getOrigin() + "	" + Apps.get(i).getVersion() + "	" + Apps.get(i).getStorehl() + "	" + Apps.get(i).getPrice() + "	" + Apps.get(i).getLikes();
 			ArrayList<String> pizza = Apps.get(i).getPlatforms();
 			for(int j = 0; j < pizza.size(); j++) {
 				tmp += "	" + pizza.get(j);

@@ -5,11 +5,16 @@ public class Application implements Comparable<Application>{
 	//==================================================================== Properties
 	private String name, description, origin, version, storehl;
 	private double price;
+	private int likes, platIndex;
 	private ArrayList<String> platforms;
 	private  int platsize;
 
 	//==================================================================== Constructor
 	public Application(String ln) {
+		this(ln, false);
+	}
+	
+	public Application(String ln, boolean likeCount) {
 		String[] parts = ln.split("\t");
 		setName(parts[0]);
 		setDescription(parts[1]);
@@ -17,11 +22,18 @@ public class Application implements Comparable<Application>{
 		setVersion(parts[3]);
 		setStorehl(parts[4]);
 		setPrice(Double.parseDouble(parts[5]));
+		if (likeCount) {
+			setLikes(Integer.parseInt(parts[6]));
+			platIndex = 7;
+		} else {
+			setLikes(0);
+			platIndex = 6;
+		}
 		setPlatforms(new ArrayList<>());
 		platsize = 0;
 		
 //		platforms.add(parts[6]);
-		for(int i = 6; i < parts.length ; i++) {
+		for(int i = platIndex; i < parts.length ; i++) {
 			platforms.add(parts[i]);
 			platsize++;
 		}
@@ -88,6 +100,17 @@ public class Application implements Comparable<Application>{
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+		if (this.likes < 0) {
+			this.likes = 0;
+		}
 	}
 	
 	public ArrayList<String> getPlatforms() {
