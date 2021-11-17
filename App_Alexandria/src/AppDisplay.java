@@ -56,7 +56,8 @@ public class AppDisplay extends JFrame{
 			}
 		});
 		}
-		//Search bar
+		
+		// Search bar
 		searchBar = new JTextField("Search Bar");
 		searchBar.setBounds(300, 470, 200, 30);
 		add(searchBar);
@@ -85,7 +86,7 @@ public class AppDisplay extends JFrame{
 		});
 		
 		
-		// submission page button
+		// Submission page button
 		submissionp = new JButton("Click here to submit an app to App Alexandria");
 		submissionp.setBounds(250, 570, 300, 30);
 		add(submissionp);
@@ -156,8 +157,6 @@ public class AppDisplay extends JFrame{
 		jpApp = new JPanel();
 		jpApp.setBorder(new TitledBorder("Applications"));
 
-
-		
 		// Application Text Area
 		appTA = new JTextArea(20, 50);
 		appTA.setEditable(false);
@@ -231,7 +230,6 @@ public class AppDisplay extends JFrame{
 	
 	//==================================================================== Main
 	public static void main(String[] args) {
-		/////////////////////////////////////////////////////Check this
 		AppDisplay ap = new AppDisplay();
         ap.setVisible(true);
 		//new AppDisplay();

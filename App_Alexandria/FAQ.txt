@@ -1,0 +1,32 @@
+                        Welcome to App Alexandria!
+
+Hopefully all of your questions can be answered here, but if there are any issues
+or outstanding questions about the program, please contact the Ptolemarchs team
+at [parker86@miamioh.edu]
+
+
+*  How do I create an account?
+
+Entering a username and password in the indicated "Sign-up" field on the login screen
+will enter you into our database. From there, this same information can be entered
+in the "Login" field to access App Alexandria.
+
+
+* What if I don't want to make an account?
+
+We are sorry to say App Alexandria does not support guest accounts in its current state.
+This is a feature we have debated on adding in the past and may revisit in the future, but
+in the meantime, we recommend creating an account. It's free after all!
+
+
+* How do I submit app requests?
+
+We love expanding our library! By pressing the "Click here to submit an app to App Alexandria" 
+button located at the bottom of App Alexandria's main page, you can access a page which allows 
+you to enter app information. Should your request submit, an admin will either accept or deny
+your request.
+
+* I've found X bug while using your platform, how do I handle this?
+
+Simply contact our team at [parker86@miamioh.edu] to report any suspected bugs. We assure you that
+customer satisfaction is our priority and will do our best to get you up and running again!

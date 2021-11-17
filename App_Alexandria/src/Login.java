@@ -17,7 +17,7 @@ import java.sql.*;
 public class Login extends JFrame implements ActionListener {
     JLabel l1, l2, l3, sUsername, sPassword, sHeader;
     JTextField tf1, tf2;
-    JButton btn1, sButton, saButton;
+    JButton btn1, sButton, saButton, faqButton;
     JPasswordField p1, sp1;
     private ArrayList<UserBean> Beans = new ArrayList<>();
     public static Boolean adminf = false;
@@ -63,7 +63,7 @@ public class Login extends JFrame implements ActionListener {
         sPassword = new JLabel("Enter Password:");
         tf2 = new JTextField();
         sp1 = new JPasswordField();
-        sButton = new JButton("Sign up as an user");
+        sButton = new JButton("Sign up as a user");
 
         sHeader.setBounds(100, 330, 400, 30);
         sUsername.setBounds(80, 370, 200, 30);
@@ -85,6 +85,12 @@ public class Login extends JFrame implements ActionListener {
         saButton.setBounds(350, 460, 200, 30);
         add(saButton);
         saButton.addActionListener(this);
+        
+        // FAQ button
+        faqButton = new JButton("Frequently Asked Questions");
+        faqButton.setBounds(100, 600, 200, 30);
+        add(faqButton);
+        faqButton.addActionListener(this);
     }
 
 	public void actionPerformed(ActionEvent e) {
@@ -93,7 +99,7 @@ public class Login extends JFrame implements ActionListener {
 			tf1.setText("");
 			p1.setText("");
 			
-		} else if(e.getActionCommand().equals("Sign up as an user")) {
+		} else if(e.getActionCommand().equals("Sign up as a user")) {
 			signUp(tf2.getText(),String.valueOf(sp1.getPassword()), false);
 			tf2.setText("");
 			sp1.setText("");
@@ -101,6 +107,9 @@ public class Login extends JFrame implements ActionListener {
 			signUp(tf2.getText(),String.valueOf(sp1.getPassword()), true);
 			tf2.setText("");
 			sp1.setText("");
+		} else if(e.getActionCommand().equals("Frequently Asked Questions")) {
+			dispose();
+			new FAQ().setVisible(true);
 		}
     }
 
