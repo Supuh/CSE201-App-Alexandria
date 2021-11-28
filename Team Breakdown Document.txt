@@ -1,0 +1,17 @@
+Group 1 - The Ptolemarchs
+Dylan Parker (Project Manager), Ethan Tobin (Technical Manager), Zhifei Ling (Programmer)
+
+Our team consisted of approximately 3 people with varying degrees of coding knowledge. Our
+project and (new) technical manager have multiple years of experience in Java as well as
+other coding/coding-adjacent languages while our programmer has ~1 year of Java experience.
+Our goal in this project was to create a basic GUI using Java that implemented various
+functionalities (search, filter, login, etc.) using a txt document database system and code.
+
+From a learning perspective, we hoped to gain newfound understanding of and familiarity with
+Java and the software engineering norms associated with group programming efforts. Making new,
+interconnected usage of Java's classes and database systems was also a new endeavor we hoped
+to gain ground on.
+
+Having met each and every objective we set for ourselves through the requirements, diagrams, 
+and charts we completed (save that which the TA removed); we have likely succeeded in reaching 
+those goals of newfound understanding and consider this project a success.
