@@ -12,6 +12,15 @@
 An app-library program created by The Ptolemarchs in association with Patricia Lennon 
 
 
+************************************************ Installation/Compilation
+
+
+To run App Alexandria, first be sure the file is used in a Java IDE (we used Eclipse). Going forward, open and run the "Login.java" file to access
+the program at a user/admin level; opening other classes first can cause program-breaking issues and is not recommended in the case of general use.
+
+
+************************************************ Class Breakdown
+
 
 For any potential App Alexandria developers, first off, welcome to the team! So to speak at least...
 Listed below you will find basic descriptions for each class and their purposes within the program.
@@ -51,6 +60,8 @@ make up said apps. Name, description, origin/developer, version number, store ho
 * UserBean: The "bean" which stores all User information. UserBean simply stores users' account information and allows for getting and setting of
 the relevant properties. Username, password, and admin status are stored here. 
 
+
+************************************************ JUnit Testers
 
 
 * Application_JUnit: Tests the Application class' general functionality using JUnit/White-box testing.
